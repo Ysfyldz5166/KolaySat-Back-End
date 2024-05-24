@@ -6,11 +6,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.satdegerlendir.demo.ticket.Error.ResourceNotFoundException;
 import com.satdegerlendir.demo.ticket.dto.createTicked;
 import com.satdegerlendir.demo.ticket.dto.updateTicketDto;
 import com.satdegerlendir.demo.user.UserService;
 import com.satdegerlendir.demo.user.user;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class TicketService {
@@ -36,11 +40,14 @@ public class TicketService {
         return ticketRepository.save(toTicket);
     }
 
-
-    public Ticket getByIdTicked(Long tickedId) {
-        return ticketRepository.findById(tickedId).orElse(null);
+    @Transactional
+    public List<Ticket> getByIdUserTicket(Long userId) {
+        List<Ticket> tickets = ticketRepository.findByUserId(userId);
+        if (tickets.isEmpty()) {
+            throw new ResourceNotFoundException("User with id " + userId + " has no tickets.");
+        }
+        return tickets;
     }
-
 
     public List<Ticket> getTickets(Optional<Long> userId) {
         if(userId.isPresent())
@@ -49,7 +56,7 @@ public class TicketService {
     }
 
 
-    public Ticket updateTickets(Long ticketId,updateTicketDto updateTicketDto) {
+    public Ticket updateTickets(@PathVariable Long ticketId,updateTicketDto updateTicketDto) {
         Optional<Ticket> ticket = ticketRepository.findById(ticketId);
         if(ticket.isPresent()){
             Ticket toUpdate = ticket.get();
@@ -61,14 +68,19 @@ public class TicketService {
             ticketRepository.save(toUpdate);
             return toUpdate;
         }
-        
-     
         return null;
     }
 
     public void deleteTicket(Long ticketId) {
         ticketRepository.deleteById(ticketId);
     }
+
+    public Ticket GetByIdTicket(Long ticketİd) {
+        return ticketRepository.findById(ticketİd).orElse(null);
+    }
     
     
 }
+
+
+

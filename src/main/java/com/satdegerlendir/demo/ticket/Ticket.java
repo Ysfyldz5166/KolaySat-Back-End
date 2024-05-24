@@ -63,6 +63,12 @@ public class Ticket {
     LocalDateTime ticketDate;
 
 
+    @NotNull
+    LocalDateTime createdDate = LocalDateTime.now(); 
+
+    @NotNull
+    boolean isActive = true; 
+
 
     public LocalDateTime getTicketDate() {
         return ticketDate;
@@ -142,6 +148,30 @@ public class Ticket {
 
     public void setBuyed(boolean isBuyed) {
         this.isBuyed = isBuyed;
+    }
+
+    public Long getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Long buyer) {
+        this.buyer = buyer;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
 }

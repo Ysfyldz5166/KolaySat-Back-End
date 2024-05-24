@@ -70,7 +70,7 @@ public class UserService {
             user foundUser = user.get();
             foundUser.setUserName(newUser.getUserName());
             foundUser.setEmail(newUser.getEmail());
-            foundUser.setPassword(newUser.getPassword());
+            foundUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             userRepository.save(foundUser);
             return foundUser;
         } else {
