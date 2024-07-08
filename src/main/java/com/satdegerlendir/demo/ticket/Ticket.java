@@ -40,6 +40,16 @@ public class Ticket {
 
     @NotBlank
     String name;
+    @NotBlank
+    String adress;
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 
     @NotBlank
     @Lob 

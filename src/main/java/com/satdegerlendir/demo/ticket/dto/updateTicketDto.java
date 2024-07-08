@@ -10,6 +10,8 @@ public class updateTicketDto {
     double price;
     String Image;
     LocalDateTime ticketDate;
+    String adress;
+
 
     public LocalDateTime getTicketDate() {
         return ticketDate;
@@ -46,5 +48,11 @@ public class updateTicketDto {
     }
     public void setImage(String image) {
         Image = image;
+    }
+    public String getAdress() {
+        return adress;
+    }
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 }

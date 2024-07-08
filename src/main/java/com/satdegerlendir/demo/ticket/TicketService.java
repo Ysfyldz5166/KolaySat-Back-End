@@ -36,6 +36,7 @@ public class TicketService {
         toTicket.setPrice(newTicket.getPrice());
         toTicket.setImage(newTicket.getImage());
         toTicket.setTicketDate(newTicket.getTicketDate());
+        toTicket.setAdress(newTicket.getAdress());
         toTicket.setUser(user);
         return ticketRepository.save(toTicket);
     }
@@ -65,6 +66,7 @@ public class TicketService {
             toUpdate.setPrice(updateTicketDto.getPrice());
             toUpdate.setType(updateTicketDto.getType());
             toUpdate.setTicketDate(updateTicketDto.getTicketDate());
+            toUpdate.setAdress(updateTicketDto.getAdress());
             ticketRepository.save(toUpdate);
             return toUpdate;
         }

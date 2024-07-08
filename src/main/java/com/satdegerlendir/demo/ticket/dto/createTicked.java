@@ -11,6 +11,8 @@ public class createTicked {
     String Image;
     Long userId;
     LocalDateTime ticketDate;
+    String adress;
+
 
 
 
@@ -65,6 +67,12 @@ public class createTicked {
     }
     public void setTicketDate(LocalDateTime ticketDate) {
         this.ticketDate = ticketDate;
+    }
+    public String getAdress() {
+        return adress;
+    }
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
 }
